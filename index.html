@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modelo 3D com Material Ajustado</title>
+  <title>Modelo 3D com Bloom Ajustado</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     body, html {
@@ -26,10 +26,15 @@
   <model-viewer
     id="viewer"
     src="M.glb"
-    alt="Modelo 3D com material ajustado"
+    alt="Modelo 3D com bloom ajustado"
     auto-rotate
     camera-controls
-    environment-image="https://modelviewer.dev/shared-assets/environments/moon_1k.hdr">
+    environment-image="https://modelviewer.dev/shared-assets/environments/moon_1k.hdr"
+    postprocessing="bloom"
+    bloom-threshold="0.85"
+    bloom-radius="0.55"
+    bloom-strength="0.7"
+    exposure="1.5">
   </model-viewer>
 
   <script>
@@ -41,9 +46,10 @@
       const material = modelViewer.model.materials.find(mat => mat.name === materialName);
 
       if (material) {
-        material.pbrMetallicRoughness.setBaseColorFactor([0, 0, 0, 1]); // Cor preta
-        material.pbrMetallicRoughness.setMetallicFactor(0.8); // Metálico 80%
-        material.pbrMetallicRoughness.setRoughnessFactor(0.3); // Rugosidade 30%
+        // Ajustar a cor base para um cinza claro com tom esverdeado
+        material.pbrMetallicRoughness.setBaseColorFactor([0.5, 0.6, 0.5, 1]); // Tom cinza-esverdeado
+        material.pbrMetallicRoughness.setMetallicFactor(0.7); // Menos metálico
+        material.pbrMetallicRoughness.setRoughnessFactor(0.4); // Leve aumento na rugosidade
         console.log(`Material '${materialName}' configurado com sucesso.`);
       } else {
         console.error(`Material '${materialName}' não encontrado.`);
