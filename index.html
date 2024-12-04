@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modelo 3D com Background Transparente</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <style>
+    /* Estilos básicos */
+    body, html {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Remove rolagem */
+      background: none; /* Sem fundo */
+    }
+
+    model-viewer {
+      width: 100vw; /* Largura total */
+      height: 100vh; /* Altura total */
+      background-color: transparent; /* Fundo transparente */
+      border: none;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <!-- Model Viewer -->
+  <model-viewer
+    src="M.glb"
+    alt="Modelo 3D com fundo transparente"
+    auto-rotate
+    auto-rotate-speed="1"
+    camera-controls
+    disable-zoom
+    shadow-intensity="0.4"
+    shadow-softness="0.35"
+    touch-action="none"
+    interaction-prompt="none">
+  </model-viewer>
+</body>
+</html>
