@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modelo 3D com Bloom Ajustado</title>
+  <title>Modelo 3D com Ambiente Personalizado</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     body, html {
@@ -26,35 +26,11 @@
   <model-viewer
     id="viewer"
     src="Front.glb"
-    alt="Modelo 3D com bloom ajustado"
+    alt="Modelo 3D com ambiente personalizado"
     auto-rotate
     camera-controls
-    environment-image="https://modelviewer.dev/shared-assets/environments/moon_1k.hdr"
-    postprocessing="bloom"
-    bloom-threshold="0.85"
-    bloom-radius="0.55"
-    bloom-strength="0.7"
+    environment-image="studio_small_08_1k.hdr"
     exposure="1.5">
   </model-viewer>
-
-  <script>
-    const modelViewer = document.querySelector("#viewer");
-
-    // Esperar o carregamento do modelo
-    modelViewer.addEventListener("load", () => {
-      const materialName = "Material.001"; // Nome do material
-      const material = modelViewer.model.materials.find(mat => mat.name === materialName);
-
-      if (material) {
-        // Ajustar a cor base para um cinza claro com tom esverdeado
-        material.pbrMetallicRoughness.setBaseColorFactor([0.5, 0.6, 0.5, 1]); // Tom cinza-esverdeado
-        material.pbrMetallicRoughness.setMetallicFactor(0.7); // Menos metálico
-        material.pbrMetallicRoughness.setRoughnessFactor(0.4); // Leve aumento na rugosidade
-        console.log(`Material '${materialName}' configurado com sucesso.`);
-      } else {
-        console.error(`Material '${materialName}' não encontrado.`);
-      }
-    });
-  </script>
 </body>
 </html>
