@@ -20,9 +20,28 @@
       height: 100vh;
       background-color: transparent;
     }
+
+    #ar-button {
+      position: absolute;
+      left: 50%;
+      bottom: 50px; /* Reposicionando botão para garantir visibilidade */
+      transform: translateX(-50%);
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #ar-button:hover {
+      background-color: #3367d6;
+    }
   </style>
 </head>
 <body>
+  <!-- Model Viewer -->
   <model-viewer
     id="viewer"
     src="toasterM3.glb"
@@ -32,7 +51,7 @@
     camera-controls
     ar
     ar-scale="fixed"
-    scale="0.1 0.1 0.1" <!-- Reduz para 10% do tamanho -->
+    scale="0.1 0.1 0.1"
     environment-image="studio_small_08_1k.hdr"
     exposure="1.5">
     <button slot="ar-button" id="ar-button">Visualizar em AR</button>
