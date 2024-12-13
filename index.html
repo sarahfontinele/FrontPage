@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Modelo 3D com Ambiente Personalizado</title>
+  <title>Modelo 3D com AR</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     body, html {
@@ -20,17 +20,40 @@
       height: 100vh;
       background-color: transparent;
     }
+
+    #ar-button {
+      position: absolute;
+      left: 50%;
+      bottom: 20px;
+      transform: translateX(-50%);
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    #ar-button:hover {
+      background-color: #3367d6;
+    }
   </style>
 </head>
 <body>
   <model-viewer
     id="viewer"
     src="toasterM.glb"
-    alt="Modelo 3D com ambiente personalizado"
+    alt="Modelo 3D com AR"
     auto-rotate
+    auto-rotate-speed="0.5"
     camera-controls
+    ar
     environment-image="studio_small_08_1k.hdr"
     exposure="1.5">
+    <!-- Botão de AR -->
+    <button slot="ar-button" id="ar-button">Visualizar em AR</button>
   </model-viewer>
 </body>
 </html>
+
